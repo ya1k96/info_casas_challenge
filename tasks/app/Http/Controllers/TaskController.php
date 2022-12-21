@@ -18,14 +18,13 @@ class TaskController extends Controller
         $name = $request->input('name');
         $completed = $request->input('completed');
 
-        $tasks = Task::all();
+        $tasks = Task::select('*');
         if(!empty($name) && $name !== 'null') {
             $tasks = Task::where('name', 'like', '%'.$name.'%');
-
-            if(!empty($completed) && $name !== 'null') $tasks->where('completed', 1);
-
-            $tasks = $tasks->get();
         }
+        if(!empty($completed) && $completed !== 'null') $tasks = $tasks->where('completed', $completed);
+
+        $tasks = $tasks->get();
 
         return response($tasks, 200);
     }

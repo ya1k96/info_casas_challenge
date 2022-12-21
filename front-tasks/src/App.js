@@ -1,4 +1,4 @@
-import { ChakraProvider, VStack, Text, Spinner, InputRightElement, Button, Input, InputGroup, Card } from '@chakra-ui/react';
+import { ChakraProvider, VStack, Text, Spinner, InputRightElement, Button, Input, InputGroup, Card, Checkbox, InputLeftElement } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 import TodoList from './components/TodoList';
 import AddList from './components/AddList';
@@ -8,6 +8,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const inputEl = useRef(null);
+  const checkEl = useRef(null);
 
   useEffect(() => {
     _getTasks()
@@ -15,7 +16,7 @@ function App() {
 
   function _getTasks(name = null) {
     setLoading(true)
-    TaskProvider.getTasks(name)
+    TaskProvider.getTasks(name, checkEl.current.checked)
     .then(res => {
       setTasks(res.data);
       setLoading(false);
@@ -23,8 +24,8 @@ function App() {
   }
 
   function handleSearch(e){
-        searchTask(inputEl.current.value)
-    }
+    searchTask(inputEl.current.value)
+  }
 
   function deleteTask(id){
     const newTodos = tasks.filter((item)=> {
@@ -65,7 +66,15 @@ function App() {
         Task App
       </Text>
       <Card backgroundColor={'white'}>
-          <InputGroup size='md'>
+          <InputGroup size='lg'>
+          <InputLeftElement width='1.6rem'>
+            <Checkbox ref={checkEl} m="2" defaultChecked={false}  onChange={ (e) => {handleSearch(e)}}>
+              <Text bgColor={'#319795'}
+                  bgClip="text"
+                  fontWeight="extrabold">
+              Done</Text>
+            </Checkbox>
+          </InputLeftElement>
           <Input
               pr='4.5rem'
               type={'text'}
