@@ -1,0 +1,36 @@
+./front_tasks/node_modules
+./front_tasks/.pnp
+./front_tasks/.pnp.js
+
+# testing
+./front_tasks/coverage
+
+# production
+./front_tasks/build
+
+# misc
+./front_tasks/.DS_Store
+./front_tasks/.env.local
+./front_tasks/.env.development.local
+./front_tasks/.env.test.local
+./front_tasks/.env.production.local
+
+./front_tasks/npm-debug.log*
+./front_tasks/yarn-debug.log*
+./front_tasks/yarn-error.log*
+
+./tasks/node_modules
+./tasks/public/hot
+./tasks/public/storage
+./tasks/storage/*.key
+./tasks/vendor
+./tasks.env
+./tasks.env.backup
+./tasks.phpunit.result.cache
+./tasks/docker-compose.override.yml
+./tasks/Homestead.json
+./tasks/Homestead.yaml
+./tasks/npm-debug.log
+./tasks/yarn-error.log
+./tasks/.idea
+./tasks/.vscode
