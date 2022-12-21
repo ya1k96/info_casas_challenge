@@ -13,6 +13,7 @@ To setup the ambience you will need to rename .env_example file with your enviro
 
 # Next Step 
 Execute  `composer install` on terminal.
+Execute  `php artisan migrate` on terminal to set tables.
 
 ## Seed 
 You will to use seeder to build data test.
